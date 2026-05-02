@@ -79,83 +79,6 @@ public:
         return passed;
     }
 
-    /*bool showFinalSummary() {
-        // [UI & Formatting: ASCII Art]
-        std::cout << R"(
-   ____                       ____  _     _               __  __                                   
-  / ___|_ __ ___  ___ _ __   | __ )(_)___| |_ _ __ ___   |  \/  | __ _ _ __   __ _  __ _  ___ _ __ 
- | |  _| '__/ _ \/ _ \ '_ \  |  _ \| / __| __| '__/ _ \  | |\/| |/ _` | '_ \ / _` |/ _` |/ _ \ '__|
- | |_| | | |  __/  __/ | | | | |_) | \__ \ |_| | | (_) | | |  | | (_| | | | | (_| | (_| |  __/ |   
-  \____|_|  \___|\___|_| |_| |____/|_|___/\__|_|  \___/  |_|  |_|\__,_|_| |_|\__,_|\__, |\___|_|   
-                                                                                   |___/    
-                                                                                                                                                                                                                                                             \$$$$$$                     
-        )";
-
-        std::cout << "\n============= 7 DAYS RANKING SUMMARY =============\n";
-        std::cout << "Sorted by Best Carbon Day (Lowest to Highest)\n";
-        std::cout << "--------------------------------------------------\n";
-        
-        DaySummary* temp = headSummary;
-        while (temp != nullptr) {
-            std::cout << "Day " << temp->dayNumber 
-                      << " | Carbon: " << temp->totalCarbonUsed 
-                      << " | Mission (" << temp->missionName << "): " 
-                      << (temp->missionPassed ? "[PASS]" : "[FAIL]") << "\n";
-            temp = temp->next;
-        }
-        std::cout << "--------------------------------------------------\n";
-        std::cout << "Total Carbon: " << totalCarbon7Days << " / " << maxCarbonCeiling << "\n";
-        std::cout << "Missions Completed: " << missionsCompleted << " / 3\n\n";
-
-        // Logic จัด Rank ตาม Requirement
-        if (totalCarbon7Days <= (maxCarbonCeiling * 0.7) && missionsCompleted == 3) {
-            std::cout << R"(
-  ______    _______                     __       
-.' ____ \  |_   __ \                   [  |  _   
-| (___ \_|   | |__) |   ,--.   _ .--.   | | / ]  
- _.____`.    |  __ /   `'_\ : [ `.-. |  | '' <   
-| \____) |  _| |  \ \_ // | |, | | | |  | |`\ \  
- \______.' |____| |___|\'-;__/[___||__][__|  \_] 
-                                                 
-            )" << "\nPerfect Eco-Bistro! You saved the world!\n";
-            return true;
-        } else if (totalCarbon7Days <= maxCarbonCeiling && missionsCompleted == 3) {
-            std::cout << R"(
-      _        _______                     __       
-     / \      |_   __ \                   [  |  _   
-    / _ \       | |__) |   ,--.   _ .--.   | | / ]  
-   / ___ \      |  __ /   `'_\ : [ `.-. |  | '' <   
- _/ /   \ \_   _| |  \ \_ // | |, | | | |  | |`\ \  
-|____| |____| |____| |___|\'-;__/[___||__][__|  \_]    
-
-            )" << "\nGreat Job! You met the goals.\n";
-            return true;
-        } else if (totalCarbon7Days <= maxCarbonCeiling * 1.2) {
-            std::cout << R"(
- ______     _______                     __       
-|_   _ \   |_   __ \                   [  |  _   
-  | |_) |    | |__) |   ,--.   _ .--.   | | / ]  
-  |  __'.    |  __ /   `'_\ : [ `.-. |  | '' <   
- _| |__) |  _| |  \ \_ // | |, | | | |  | |`\ \  
-|_______/  |____| |___|\'-;__/[___||__][__|  \_]   
-
-            )" << "\nNeeds some improvement, but you survived.\n";
-            return true;
-        } else {
-            std::cout << R"(
- ________   _______                     __       
-|_   __  | |_   __ \                   [  |  _   
-  | |_ \_|   | |__) |   ,--.   _ .--.   | | / ]  
-  |  _|      |  __ /   `'_\ : [ `.-. |  | '' <   
- _| |_      _| |  \ \_ // | |, | | | |  | |`\ \  
-|_____|    |____| |___|\'-;__/[___||__][__|  \_] 
-                                                 
-            )" << "\nGAME OVER! The authorities closed your bistro due to extreme pollution. You MUST restart.\n";
-            return false; // บังคับเริ่มใหม่
-        }
-    }*/
-
-
     bool showFinalSummary() {
         cout << "\n\n";
         cout << "╔════════════════════════════════════════════════════════════════════════════════════════════╗" << endl;
@@ -183,13 +106,13 @@ public:
         }
         cout << "╚═══════════╩═══════════════╩════════════════════════════════════════════════════╩═══════════╝" << endl;
 
-        std::cout << "----------------------------------------------------------------------------------------------\n";
-        std::cout << "Total Carbon: " << totalCarbon7Days << " / " << maxCarbonCeiling << "\n";
-        std::cout << "Missions Completed: " << missionsCompleted << " / 3\n\n";
+        cout << "----------------------------------------------------------------------------------------------\n";
+        cout << "Total Carbon: " << totalCarbon7Days << " / " << maxCarbonCeiling << "\n";
+        cout << "Missions Completed: " << missionsCompleted << " / 3\n\n";
     
 
         if (totalCarbon7Days <= (maxCarbonCeiling * 0.7) && missionsCompleted == 3) {
-            std::cout << R"(
+            cout << R"(
   ______    _______                     __       
 .' ____ \  |_   __ \                   [  |  _   
 | (___ \_|   | |__) |   ,--.   _ .--.   | | / ]  
@@ -200,7 +123,7 @@ public:
             )" << "\nPerfect Eco-Bistro! You saved the world!\n";
             return true;
         } else if (totalCarbon7Days <= maxCarbonCeiling && missionsCompleted == 3) {
-            std::cout << R"(
+            cout << R"(
       _        _______                     __       
      / \      |_   __ \                   [  |  _   
     / _ \       | |__) |   ,--.   _ .--.   | | / ]  
@@ -211,7 +134,7 @@ public:
             )" << "\nGreat Job! You met the goals.\n";
             return true;
         } else if (totalCarbon7Days <= maxCarbonCeiling * 1.2) {
-            std::cout << R"(
+            cout << R"(
  ______     _______                     __       
 |_   _ \   |_   __ \                   [  |  _   
   | |_) |    | |__) |   ,--.   _ .--.   | | / ]  
@@ -222,7 +145,7 @@ public:
             )" << "\nNeeds some improvement, but you survived.\n";
             return true;
         } else {
-            std::cout << R"(
+            cout << R"(
  ________   _______                     __       
 |_   __  | |_   __ \                   [  |  _   
   | |_ \_|   | |__) |   ,--.   _ .--.   | | / ]  

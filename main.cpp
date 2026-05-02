@@ -41,19 +41,9 @@ int main() {
     bool restartGame;
     do {
         restartGame = false;
-        GameManager game(800); // สมมติเพดานที่ 800
+        GameManager game(800); // กำหนดเกณฑ์ที่ 800
 
-        /*std::cout << R"(
- ____      ____      __                                     
-|_  _|    |_  _|    [  |                                    
-  \ \  /\  / /.---.  | |  .---.   .--.   _ .--..--.  .---.  
-   \ \/  \/ // /__\\ | | / /'`\]/ .'`\ \[ `.-. .-. |/ /__\\ 
-    \  /\  / | \__., | | | \__. | \__. | | | | | | || \__., 
-     \/  \/   '.__.'[___]'.___.' '.__.' [___||__||__]'.__.' 
-                                                            
-        )" << "\nWelcome to Green Bistro Manager!\n\n";*/
-
-        std::cout<< MAGENTA << R"(  
+        cout<< MAGENTA << R"(  
 ____      ____      __                                     
 |_  _|    |_  _|    [  |                                    
   \ \  /\  / /.---.  | |  .---.   .--.   _ .--..--.  .---.  
@@ -62,9 +52,9 @@ ____      ____      __
      \/  \/   '.__.'[___]'.___.' '.__.' [___||__||__]'.__.'
      )" << RESET << "\n";
 
-std::cout <<MAGENTA<< "     ╔══════════════════════════════════════════════════╗" << RESET <<std::endl;
-std::cout <<BOLD<<MAGENTA<< "     ║     🌿 WELCOME TO GREEN BISTRO MANAGER 🌿        ║" << RESET <<std::endl;
-std::cout <<MAGENTA<< "     ╚══════════════════════════════════════════════════╝" << RESET <<std::endl;
+cout <<MAGENTA<< "     ╔══════════════════════════════════════════════════╗" << RESET <<std::endl;
+cout <<BOLD<<MAGENTA<< "     ║     🌿 WELCOME TO GREEN BISTRO MANAGER 🌿        ║" << RESET <<std::endl;
+cout <<MAGENTA<< "     ╚══════════════════════════════════════════════════╝" << RESET <<std::endl;
 cout<<"\n\n\n";
 
         // สุ่ม 3 ภารกิจ ลงใน 3 วันจาก 7 วัน
@@ -84,9 +74,9 @@ cout<<"\n\n\n";
             cout << "          DAY " << day << "          \n";
             cout << "==============================\n";*/
 
-            std::cout<< CYAN << "╔══════════════════════════════════════════╗" << RESET <<std::endl;
-            std::cout<< BOLD << CYAN << "║ [ SYSTEM STATUS ] : ACTIVE 📅 DAY: "<<"["  << day <<"/7]"<<" ║" << RESET << std::endl;
-            std::cout<< CYAN << "╚══════════════════════════════════════════╝" << RESET <<std::endl;
+            cout<< CYAN << "╔══════════════════════════════════════════╗" << RESET <<std::endl;
+            cout<< BOLD << CYAN << "║ [ SYSTEM STATUS ] : ACTIVE 📅 DAY: "<<"["  << day <<"/7]"<<" ║" << RESET << std::endl;
+            cout<< CYAN << "╚══════════════════════════════════════════╝" << RESET <<std::endl;
             
             int todayMission = missionDays[day-1];
             //cout << ">> Today's Mission: " << missionNames[todayMission] << " <<\n\n";
@@ -106,13 +96,13 @@ cout<<"\n\n\n";
 
             //cout << "Select a menu to cook today:\n";
 
-            std::cout<< "     ┌─────────────────────────────────┐" <<std::endl;
-            std::cout<<BOLD<< "     │   📥 AVAILABLE MENU FOR TODAY   │"<<std::endl;
-            std::cout<< "     └─────────────────────────────────┘" <<std::endl;
+            cout<< "     ┌─────────────────────────────────┐" <<std::endl;
+            cout<<BOLD<< "     │   📥 AVAILABLE MENU FOR TODAY   │"<<std::endl;
+            cout<< "     └─────────────────────────────────┘" <<std::endl;
             cout<<"\n";
 
-            std::cout<<BOLD<< "[ID]   [ DISH NAME ]                             " <<std::endl;
-            std::cout<< "─────────────────────────────────────────────────────── " <<std::endl;
+            cout<<BOLD<< "[ID]   [ DISH NAME ]                             " <<std::endl;
+            cout<< "─────────────────────────────────────────────────────── " <<std::endl;
             for (size_t i = 0; i < todaysMenus.size(); i++) {
                 //cout << i + 1 << ". " << todaysMenus[i]->menuName << "\n";
                 printf("%s%02zu%s  |  %s%-35s%s \n", 
@@ -120,7 +110,7 @@ cout<<"\n\n\n";
                 WHITE, todaysMenus[i]->menuName.c_str(), RESET // ชื่อเมนู
                 );
             }
-            std::cout<< "───────────────────────────────────────────────────────" <<std::endl;
+            cout<< "───────────────────────────────────────────────────────" <<std::endl;
             
             int menuChoice;
             do {

@@ -56,15 +56,15 @@ public:
         string headerText = " 🍳 PREPARING: " + menuName + " ";
         int len = headerText.length();
         //กรอบบน 
-        std::cout << "\n╔";
-        for (int i = 0; i < len; i++) std::cout << "═";
-        std::cout << "╗" << std::endl;
+        cout << "\n╔";
+        for (int i = 0; i < len; i++) cout << "═";
+        cout << "╗" << endl;
         //ตรงกลาง
-        std::cout << "║" << headerText << "  ║" << std::endl;
+        cout << "║" << headerText << "  ║" << endl;
         //กรอบล่าง
-        std::cout << "╚";
-        for (int i = 0; i < len; i++) std::cout << "═";
-        std::cout << "╝" << std::endl;
+        cout << "╚";
+        for (int i = 0; i < len; i++) cout << "═";
+        cout << "╝" << endl;
 
         for (auto& cat : categories) {
             //cout << "Select [" << cat.name << "]:\n";
