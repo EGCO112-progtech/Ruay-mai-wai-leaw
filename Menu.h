@@ -79,7 +79,9 @@ public:
                 printf("%s", formattedType.c_str());
                 int typePadding = 15 - formattedType.length(); 
                 for (int j = 0; j < typePadding; j++) cout << " ";
-                printf("%s+%02d CO2%s\n", YELLOW, ing->getCarbon(), RESET);
+                printf("\n");
+        
+                // printf("%s+%02d CO2%s\n", YELLOW, ing->getCarbon(), RESET);
             }
             cout<< "  ─────────────────────────────────────────────────────────────────────────"<< endl;
             int choice;

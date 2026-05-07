@@ -188,7 +188,7 @@ vector<Menu*> setupDay1Menus() {
     m2->addCategory("Meat", {new LocalIngredient("Local Farm Pork", 20), new ImportedIngredient("Imported Kurobuta", 30), new ProcessedIngredient("Supermarket Pork", 25)});
     m2->addCategory("Sauce", {new ProcessedIngredient("Ready-made Black Pepper", 15), new LocalIngredient("Homemade Sauce", 5), new LocalIngredient("Salt & Pepper", 2)});
     m2->addCategory("Veggies", {new LocalIngredient("Fresh Mashed Potato", 10), new ProcessedIngredient("Instant Mashed Potato", 20), new ImportedIngredient("Imported Asparagus", 25)});
-    m2->addCategory("Fat/Oil", {new ProcessedIngredient("Butter", 15), new ProcessedIngredient("Vegetable Oil", 10), new ImportedIngredient("Imported Olive Oil", 20)});
+    m2->addCategory("Fat/Oil", {new ImportedIngredient("Butter", 15), new ProcessedIngredient("Vegetable Oil", 10), new ImportedIngredient("Imported Olive Oil", 20)});
     day1.push_back(m2);
 
     // 3. ข้าวหมกไก่
@@ -225,11 +225,11 @@ vector<Menu*> setupDay2Menus() {
     m2->addCategory("Meat", {new LocalIngredient("Free-range Oxtail", 20), new ImportedIngredient("Imported Oxtail", 40)});
     m2->addCategory("Soup Base", {new LocalIngredient("Homemade Herbs", 5), new ProcessedIngredient("Halal Beef Cube", 15)});
     m2->addCategory("Veggies", {new LocalIngredient("Local Potato & Tomato", 5), new ImportedIngredient("Imported Potato", 20)});
-    m2->addCategory("Energy", {new LocalIngredient("Overnight Charcoal", 10), new ProcessedIngredient("Gas Stove", 15), new ProcessedIngredient("Electric Pressure Cooker", 25)});
+    m2->addCategory("Energy", {new LocalIngredient("Charcoal", 10), new ProcessedIngredient("Gas Stove", 15), new ProcessedIngredient("Electric Pressure Cooker", 25)});
     day2.push_back(m2);
 
-    // 3. แซนวิชแฮมชีส (Not Vegan, Not LowFlame)
-    Menu* m3 = new Menu("Ham & Cheese Sandwich", false, false);
+    // 3. แซนวิชแฮมชีส (Not Vegan, LowFlame)
+    Menu* m3 = new Menu("Ham & Cheese Sandwich", false, true);
     m3->addCategory("Meat", {new ImportedIngredient("Imported Ham", 30), new LocalIngredient("Local Ham", 15), new ProcessedIngredient("Processed Chicken Breast", 20)});
     m3->addCategory("Bread", {new LocalIngredient("Local Bakery Whole Wheat", 10), new ProcessedIngredient("Factory Bread", 15), new ImportedIngredient("Imported Bread", 25)});
     m3->addCategory("Cheese", {new ImportedIngredient("Imported Cheddar", 30), new ProcessedIngredient("Processed Cheese Slice", 20), new LocalIngredient("Homemade Cheese", 10)});
@@ -237,11 +237,11 @@ vector<Menu*> setupDay2Menus() {
     m3->addCategory("Sauce", {new ProcessedIngredient("Mayonnaise", 15), new LocalIngredient("Homemade Sauce", 5)});
     day2.push_back(m3);
 
-    // 4. ซุปฟักทอง (Vegan, LowFlame) -> สมมติให้เป็น Vegan
-    Menu* m4 = new Menu("Pumpkin Soup", true, true);
-    m4->addCategory("Pumpkin", {new LocalIngredient("Local Pumpkin", 5), new LocalIngredient("Local Japanese Pumpkin", 8), new ProcessedIngredient("Supermarket Pumpkin", 15)});
+    // 4. ซุปฟักทอง (Vegan, Not LowFlame) -> สมมติให้เป็น Vegan
+    Menu* m4 = new Menu("Pumpkin Soup", true, false);
+    m4->addCategory("Pumpkin", {new LocalIngredient("Local Pumpkin", 5), new ImportedIngredient("Japanese Pumpkin", 8), new ProcessedIngredient("Supermarket Pumpkin", 15)});
     m4->addCategory("Liquid", {new ProcessedIngredient("Fresh Milk (Cow)", 15), new LocalIngredient("Soy Milk", 8)}); // ถ้าใช้นมวัวอาจจะไม่ Vegan 100% แต่ใส่ไว้เป็นกิมมิคได้
-    m4->addCategory("Fat", {new ProcessedIngredient("Palm Oil", 20), new ProcessedIngredient("Soybean Oil", 15), new ProcessedIngredient("Rice Bran Oil", 10)});
+    m4->addCategory("Fat", {new LocalIngredient("Palm Oil", 20), new ImportedIngredient("Soybean Oil", 15), new ImportedIngredient("Rice Bran Oil", 10)});
     day2.push_back(m4);
 
     return day2;
@@ -258,8 +258,8 @@ vector<Menu*> setupDay3Menus() {
     m1->addCategory("Veggies", {new ImportedIngredient("Imported Veggies", 25), new ProcessedIngredient("Hydroponic Veggies", 15), new LocalIngredient("Market Veggies", 5)});
     day3.push_back(m1);
 
-    // 2. เบอร์เกอร์หมูชีส (Not Vegan, Not LowFlame)
-    Menu* m2 = new Menu("Pork Cheese Burger", false, false);
+    // 2. เบอร์เกอร์หมูชีส (Not Vegan, LowFlame)
+    Menu* m2 = new Menu("Pork Cheese Burger", false, true);
     m2->addCategory("Meat", {new LocalIngredient("Local Minced Pork", 15), new ProcessedIngredient("Frozen Minced Pork", 20), new ImportedIngredient("Imported Minced Beef", 35)});
     m2->addCategory("Bread", {new LocalIngredient("Homemade Fresh Bread", 10), new ProcessedIngredient("Supermarket Bread", 15), new ImportedIngredient("Imported Bread", 25)});
     m2->addCategory("Cheese", {new ImportedIngredient("Imported Cheese", 30), new ProcessedIngredient("Normal Cheese Slices", 15)});
@@ -280,7 +280,7 @@ vector<Menu*> setupDay3Menus() {
     m4->addCategory("Meat", {new LocalIngredient("Local Chicken Breast", 15), new ProcessedIngredient("CP Frozen Drumsticks", 20), new LocalIngredient("Benja Chicken", 30)});
     m4->addCategory("Sauce", {new LocalIngredient("Homemade Pepper Sauce", 10), new ProcessedIngredient("Thai Gochujang", 20), new ImportedIngredient("Korean Gochujang", 35)});
     m4->addCategory("Flour", {new LocalIngredient("Local Rice Flour", 10), new ProcessedIngredient("Instant Crispy Flour", 15)});
-    m4->addCategory("Oil", {new ProcessedIngredient("Vegetable Oil", 10), new ProcessedIngredient("Soybean Oil", 15), new LocalIngredient("Air Fryer (No Oil)", 0)});
+    m4->addCategory("Oil", {new ProcessedIngredient("Vegetable Oil", 10), new ImportedIngredient("Soybean Oil", 15), new LocalIngredient("Air Fryer (No Oil)", 0)});
     day3.push_back(m4);
 
     return day3;
@@ -305,7 +305,7 @@ vector<Menu*> setupDay4Menus() {
     m2->addCategory("Shrimp", {new LocalIngredient("Local Fishery Banana Shrimp", 30), new LocalIngredient("Farm Shrimp", 25), new ImportedIngredient("Imported Frozen Peeled Shrimp", 40)});
     m2->addCategory("Sator", {new LocalIngredient("Backyard Sator", 10), new ProcessedIngredient("Plastic Packed Peeled Sator", 25)});
     m2->addCategory("Paste", {new LocalIngredient("Community Homemade Halal Kapi", 15), new ProcessedIngredient("Instant Curry Paste", 20)});
-    m2->addCategory("Oil", {new ProcessedIngredient("Palm Oil", 10), new LocalIngredient("Cold-Pressed Coconut Oil", 25)});
+    m2->addCategory("Oil", {new LocalIngredient("Palm Oil", 10), new LocalIngredient("Cold-Pressed Coconut Oil", 25)});
     day4.push_back(m2);
 
     // 3. แพนเค้ก (Not Vegan, LowFlame)
@@ -314,14 +314,14 @@ vector<Menu*> setupDay4Menus() {
     m3->addCategory("Milk", {new LocalIngredient("Local Fresh Milk", 15), new ProcessedIngredient("UHT Milk", 15), new ImportedIngredient("Imported Almond Milk", 35)});
     m3->addCategory("Egg", {new LocalIngredient("Farm Egg", 5), new LocalIngredient("Organic Egg", 10)});
     m3->addCategory("Topping", {new LocalIngredient("Honey", 20), new ImportedIngredient("Imported Maple Syrup", 40), new LocalIngredient("Local Fruits", 15)});
-    m3->addCategory("Fat", {new ProcessedIngredient("Butter", 20), new ProcessedIngredient("Vegetable Oil", 10)});
+    m3->addCategory("Fat", {new ImportedIngredient("Butter", 20), new ProcessedIngredient("Vegetable Oil", 10)});
     day4.push_back(m3);
 
     // 4. ต้มยำเห็ดเจน้ำข้น (Vegan, Not LowFlame)
     Menu* m4 = new Menu("Vegan Creamy Tom Yum Mushroom", true, false);
     m4->addCategory("Mushroom", {new LocalIngredient("Straw Mushroom", 10), new LocalIngredient("Fairy Mushroom", 10), new LocalIngredient("Shiitake Mushroom", 15)});
     m4->addCategory("Herbs", {new ImportedIngredient("Imported Herbs", 30), new LocalIngredient("Market Herbs", 10), new LocalIngredient("Homegrown Herbs", 5)});
-    m4->addCategory("Extras", {new ProcessedIngredient("Evaporated Milk", 15), new ProcessedIngredient("Fried Dried Chili", 10), new ProcessedIngredient("Chili Paste", 15)});
+    m4->addCategory("Extras", {new ProcessedIngredient("Evaporated Milk", 15), new LocalIngredient("Fried Dried Chili", 10), new ProcessedIngredient("Chili Paste", 15)});
     day4.push_back(m4);
 
     return day4;
@@ -335,11 +335,11 @@ vector<Menu*> setupDay5Menus() {
     Menu* m1 = new Menu("Stir-Fried Mixed Veggies (Vegan)", true, false);
     m1->addCategory("Veggies", {new ImportedIngredient("Imported Veggies", 25), new ProcessedIngredient("Hydroponic Veggies", 15), new LocalIngredient("Market Veggies", 5)});
     m1->addCategory("Protein", {new LocalIngredient("Tofu", 10), new ProcessedIngredient("Textured Vegetable Protein (TVP)", 15)});
-    m1->addCategory("Oil", {new ProcessedIngredient("Palm Oil", 10), new ProcessedIngredient("Soybean Oil", 15), new ProcessedIngredient("Rice Bran Oil", 20)});
+    m1->addCategory("Oil", {new LocalIngredient("Palm Oil", 10), new ImportedIngredient("Soybean Oil", 15), new ImportedIngredient("Rice Bran Oil", 20)});
     day5.push_back(m1);
 
-    // 2. ซาลาเปาหมูสับ (Not Vegan, Not LowFlame)
-    Menu* m2 = new Menu("Minced Pork Bun", false, false);
+    // 2. ซาลาเปาหมูสับ (Not Vegan, LowFlame)
+    Menu* m2 = new Menu("Minced Pork Bun", false, true);
     m2->addCategory("Flour", {new LocalIngredient("Fresh Dough", 15), new ProcessedIngredient("Instant Flour Mix", 20)});
     m2->addCategory("Meat", {new LocalIngredient("Local Minced Pork", 20), new ProcessedIngredient("Frozen Pork", 20), new ImportedIngredient("Imported Pork", 35)});
     m2->addCategory("Seasoning", {new ProcessedIngredient("Seasoning Sauce", 10), new ProcessedIngredient("Soy Sauce", 10), new LocalIngredient("Homemade Seasoning", 15)});
@@ -351,7 +351,7 @@ vector<Menu*> setupDay5Menus() {
     m3->addCategory("Dough", {new LocalIngredient("Fresh Hand-kneaded Wheat Dough", 15), new ProcessedIngredient("Frozen Instant Roti Dough", 20)});
     m3->addCategory("Filling", {new LocalIngredient("Open-farm Minced Chicken", 25), new ProcessedIngredient("Industrial Minced Chicken", 15)});
     m3->addCategory("Pickles", {new LocalIngredient("Market Organic Cucumber", 10), new LocalIngredient("Natural Fermented Vinegar", 15), new ProcessedIngredient("Industrial Distilled Vinegar", 10)});
-    m3->addCategory("Fat", {new ImportedIngredient("Imported Ghee", 40), new ProcessedIngredient("Margarine", 10), new ProcessedIngredient("Rice Bran Oil", 15)});
+    m3->addCategory("Fat", {new ImportedIngredient("Imported Ghee", 40), new ProcessedIngredient("Margarine", 10), new ImportedIngredient("Rice Bran Oil", 15)});
     day5.push_back(m3);
 
     // 4. ราเมนซุปกระดูกหมู (Not Vegan, Not LowFlame)
@@ -378,8 +378,8 @@ vector<Menu*> setupDay6Menus() {
     m1->addCategory("Baking Method", {new LocalIngredient("Wood Fired Oven", 20), new ProcessedIngredient("Electric Oven", 15), new ProcessedIngredient("Microwave", 5)});
     day6.push_back(m1);
 
-    // 2. เนื้อย่างจิ้มแจ่ว (Halal) (Not Vegan, Not LowFlame)
-    Menu* m2 = new Menu("Grilled Beef with Jaew Sauce (Halal)", false, false);
+    // 2. เนื้อย่างจิ้มแจ่ว (Halal) (Not Vegan, LowFlame)
+    Menu* m2 = new Menu("Grilled Beef with Jaew Sauce (Halal)", false, true);
     m2->addCategory("Meat", {new LocalIngredient("Local Fattened Beef", 35), new ImportedIngredient("Imported A5 Wagyu Beef", 150)});
     m2->addCategory("Marinade", {new LocalIngredient("Natural Fermented Halal Soy Sauce", 20), new ProcessedIngredient("Industrial Seasoning Sauce", 10)});
     m2->addCategory("Sauce", {new LocalIngredient("Homemade Roasted Rice", 5), new LocalIngredient("Homemade Chili Powder", 5), new LocalIngredient("Fresh Lime", 5), new ProcessedIngredient("Bottled Artificial Lime Juice", 5)});
@@ -436,7 +436,7 @@ vector<Menu*> setupDay7Menus() {
     m4->addCategory("Tofu", {new LocalIngredient("Market Board Tofu", 10), new ProcessedIngredient("Supermarket Organic Tofu", 20), new ImportedIngredient("Japanese Tofu in Mineral Water", 35)});
     m4->addCategory("Chili & Garlic", {new LocalIngredient("Garden Bird's Eye Chili", 5), new ImportedIngredient("Chinese Garlic", 10), new LocalIngredient("Thai Garlic", 10)});
     m4->addCategory("Seasoning", {new LocalIngredient("Sea Salt", 5), new LocalIngredient("Thai Soy Sauce", 10), new ProcessedIngredient("Umami Seasoning Powder", 10)});
-    m4->addCategory("Oil", {new ProcessedIngredient("Rice Bran Oil", 15), new ProcessedIngredient("Vegetable Oil", 10), new LocalIngredient("Teflon Pan (No Oil)", 0)});
+    m4->addCategory("Oil", {new ImportedIngredient("Rice Bran Oil", 15), new ProcessedIngredient("Vegetable Oil", 10), new LocalIngredient("Teflon Pan (No Oil)", 0)});
     day7.push_back(m4);
 
     return day7;
