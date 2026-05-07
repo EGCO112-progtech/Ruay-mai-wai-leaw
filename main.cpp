@@ -27,6 +27,16 @@ vector<Menu*> setupDay5Menus();
 vector<Menu*> setupDay6Menus();
 vector<Menu*> setupDay7Menus();
 
+int getSafeInt(int min, int max) {
+    int input;
+    while (!(cin >> input) || input < min || input > max) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "❌ Invalid! Please enter a number (" << min << "-" << max << "): ";
+    }
+    return input;
+}
+
 int main() {
     srand(time(0));
     string missionNames[] = {
@@ -112,12 +122,8 @@ cout<<"\n\n\n";
             }
             cout<< "───────────────────────────────────────────────────────" <<std::endl;
             
-            int menuChoice;
-            do {
-                //cout << "Enter choice (1-4): ";
-                cout << "👉 " << BOLD << "SELECT YOUR DISH (1-4) > " << RESET;
-                cin >> menuChoice;
-            } while(menuChoice < 1 || menuChoice > 4);
+            cout << "👉 " << BOLD << "SELECT YOUR DISH (1-4) > " << RESET;
+            int menuChoice = getSafeInt(1, 4);
 
             Menu* selectedMenu = todaysMenus[menuChoice - 1];
             selectedMenu->letPlayerChoose(); // ให้ผู้เล่นเลือกวัตถุดิบย่อย
@@ -162,8 +168,9 @@ cout<<"\n\n\n";
 
         if (!canEndGame) {
             cout << "\nPress Enter to restart...";
-            cin.ignore(); cin.get();
-            restartGame = true; // บังคับ F Rank เริ่มใหม่
+            cin.ignore(1000, '\n'); // แนะนำให้ใส่ตัวเลขกันเหนียวไว้ครับ
+            cin.get();
+            restartGame = true;
         }
 
     } while (restartGame);
@@ -188,7 +195,7 @@ vector<Menu*> setupDay1Menus() {
     m2->addCategory("Meat", {new LocalIngredient("Local Farm Pork", 20), new ImportedIngredient("Imported Kurobuta", 30), new ProcessedIngredient("Supermarket Pork", 25)});
     m2->addCategory("Sauce", {new ProcessedIngredient("Ready-made Black Pepper", 15), new LocalIngredient("Homemade Sauce", 5), new LocalIngredient("Salt & Pepper", 2)});
     m2->addCategory("Veggies", {new LocalIngredient("Fresh Mashed Potato", 10), new ProcessedIngredient("Instant Mashed Potato", 20), new ImportedIngredient("Imported Asparagus", 25)});
-    m2->addCategory("Fat/Oil", {new ImportedIngredient("Butter", 15), new ProcessedIngredient("Vegetable Oil", 10), new ImportedIngredient("Imported Olive Oil", 20)});
+    m2->addCategory("Fat/Oil", {new ImportedIngredient("Butter", 15), new ImportedIngredient("Vegetable Oil", 10), new ImportedIngredient("Imported Olive Oil", 20)});
     day1.push_back(m2);
 
     // 3. ข้าวหมกไก่
@@ -225,7 +232,7 @@ vector<Menu*> setupDay2Menus() {
     m2->addCategory("Meat", {new LocalIngredient("Free-range Oxtail", 20), new ImportedIngredient("Imported Oxtail", 40)});
     m2->addCategory("Soup Base", {new LocalIngredient("Homemade Herbs", 5), new ProcessedIngredient("Halal Beef Cube", 15)});
     m2->addCategory("Veggies", {new LocalIngredient("Local Potato & Tomato", 5), new ImportedIngredient("Imported Potato", 20)});
-    m2->addCategory("Energy", {new LocalIngredient("Charcoal", 10), new ProcessedIngredient("Gas Stove", 15), new ProcessedIngredient("Electric Pressure Cooker", 25)});
+    m2->addCategory("Energy", {new LocalIngredient("Overnight Charcoal", 10), new ProcessedIngredient("Gas Stove", 15), new ProcessedIngredient("Electric Pressure Cooker", 25)});
     day2.push_back(m2);
 
     // 3. แซนวิชแฮมชีส (Not Vegan, LowFlame)

@@ -85,12 +85,13 @@ public:
             }
             cout<< "  ─────────────────────────────────────────────────────────────────────────"<< endl;
             int choice;
-            do {
-                /*cout << "Enter choice (1-" << cat.choices.size() << "): ";
-                cin >> choice;*/
-                cout << "  Enter choice (1-" << cat.choices.size() << "): " << RESET;
-                cin >> choice;
-            } while(choice < 1 || choice > cat.choices.size());
+            cout << "  Enter choice (1-" << cat.choices.size() << "): " << RESET;
+            // ดักจับทั้ง "ไม่ใช่ตัวเลข" และ "เลขไม่อยู่ในขอบเขต"
+            while (!(cin >> choice) || choice < 1 || choice > (int)cat.choices.size()) {
+                cin.clear();           // ล้างสถานะ Error
+                cin.ignore(1000, '\n'); // ล้างขยะในท่อ input
+                cout  << "  ❌ Invalid! Please enter a number (1-" << cat.choices.size() << "): ";
+            }
             selectedIngredients.push_back(cat.choices[choice - 1]);
         }
     }
